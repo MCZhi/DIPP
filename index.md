@@ -13,13 +13,13 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 ## Results
 
-<video muted controls width=500> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video>
+<video muted controls width=700> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video>
 
-<video muted controls width=500> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video>
+<video muted controls width=700> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video>
 
-<video muted controls width=500> <source src="./src/cc87297c748a635f.mp4"  type="video/mp4"> </video>
+<video muted controls width=700> <source src="./src/cc87297c748a635f.mp4"  type="video/mp4"> </video>
 
-<video muted controls width=500> <source src="./src/d0c29a6a32aac78f.mp4"  type="video/mp4"> </video>
+<video muted controls width=700> <source src="./src/d0c29a6a32aac78f.mp4"  type="video/mp4"> </video>
 
 ## Contact
 
