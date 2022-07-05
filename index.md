@@ -1,14 +1,10 @@
-## Differentiable Integrated Multi-agent Prediction and Motion Planning Framework with Learnable Cost Function for Autonomous Driving
+# Differentiable Integrated Multi-agent Prediction and Motion Planning Framework with Learnable Cost Function for Autonomous Driving
 
-You can use the [editor on GitHub](https://github.com/MCZhi/DIPP/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[AutoMan Research Lab, Nanyang Technological University](https://lvchen.wixsite.com/automan)
 
 ### Abstract
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-Syntax highlighted code block
+Predicting the future states of surrounding traffic participants and planning a safe, smooth, and socially compliant trajectory accordingly is crucial for autonomous vehicles. However, there are two major issues with the current autonomous driving system: the prediction module is often decoupled from the planning module and the cost function for planning is hard to specify and tune. Therefore, we propose an end-to-end differentiable framework that integrates prediction and planning modules and is able to learn the cost function from data. Specifically, we employ a differentiable nonlinear optimizer as the motion planner, which takes as input the predicted trajectories of surrounding agents given by the neural network and optimizes the trajectory for the autonomous vehicle, thus enabling all operations in the framework to be differentiable including the cost function weights. The proposed framework is trained on a large-scale real-world driving dataset with the objective to reproduce human driving trajectories in the entire driving scene and tested in both open-loop and closed-loop manners. The results reveal that the proposed method outperforms the baseline methods, especially in the closed-loop test where the baseline methods suffer from distributional shifts. We also demonstrate that our proposed method delivers planning-aware prediction results, allowing the planning module to output close-to-human trajectories.
 
 ### Prediction
 
