@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Differentiable Integrated Multi-agent Prediction and Motion Planning Framework with Learnable Cost Function for Autonomous Driving
 
 You can use the [editor on GitHub](https://github.com/MCZhi/DIPP/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
