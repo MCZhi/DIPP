@@ -13,7 +13,7 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 <img src="./src/overview.png" style="width:90%;">
 
-## Results
+## Closed-loop testing
 
 ### Cruising
 
