@@ -1,6 +1,6 @@
 # Differentiable Integrated Multi-agent Prediction and Motion Planning Framework with Learnable Cost Function for Autonomous Driving
 
-[Zhiyu Huang](https://mczhi.github.io/), Haochen Liu, [Jingda Wu]([https://scholar.google.com/citations?user=icu-ZFAAAAAJ&hl=en](https://wujingda.github.io/)), [Chen Lv](https://scholar.google.com/citations?user=UKVs2CEAAAAJ&hl=en) 
+[Zhiyu Huang](https://mczhi.github.io/), Haochen Liu, [Jingda Wu](https://wujingda.github.io/), [Chen Lv](https://scholar.google.com/citations?user=UKVs2CEAAAAJ&hl=en) 
 
 [AutoMan Research Lab, Nanyang Technological University](https://lvchen.wixsite.com/automan)
 
