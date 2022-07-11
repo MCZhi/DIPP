@@ -17,7 +17,7 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 ### Unprotected left turn
 
-| <video muted controls width=390> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=390> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
+| <video muted controls width=380> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
 
 ## Contact
 
