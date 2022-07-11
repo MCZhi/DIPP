@@ -15,7 +15,25 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 ## Results
 
-### Unprotected left turn
+### Cruising
+
+| <video muted controls width=380> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
+
+### Traffic light
+
+| <video muted controls width=380> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
+
+### Turning
+
+| <video muted controls width=380> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
+
+### Interaction
+
+| <video muted controls width=380> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
+
+| <video muted controls width=380> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
+
+### Emergency
 
 | <video muted controls width=380> <source src="./src/41b679612fa714aa.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
 
