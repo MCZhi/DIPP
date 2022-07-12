@@ -21,11 +21,11 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 ### Traffic light
 
-| <video muted controls width=380> <source src="./src/cf4c93a51f255da.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/96a9bc8c1242ee5d.mp4"  type="video/mp4"> </video> |
+| <video muted controls width=380> <source src="./src/cf4c93a51f255da.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/5af7263eeae8cc38.mp4"  type="video/mp4"> </video> |
 
 ### Turning
 
-| <video muted controls width=380> <source src="./src/5af7263eeae8cc38.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/4b7a175072d54d11.mp4"  type="video/mp4"> </video> |
+| <video muted controls width=380> <source src="./src/cf966e6cb27802a3.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/4b7a175072d54d11.mp4"  type="video/mp4"> </video> |
 
 ### Interaction
 
