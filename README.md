@@ -7,7 +7,7 @@ This repo is the implementation of the following paper:
 <br> **[[Project Website]](https://mczhi.github.io/DIPP/)**
 
 ## Dataset
-Download the Waymo
+Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1; only the files in ```uncompressed/scenario/training_20s``` are needed. Place the files in a folder of your choosing, and split them into training and testing folders.
 
 ## Installation
 ### thesus
