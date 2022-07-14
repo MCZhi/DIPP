@@ -10,14 +10,22 @@ This repo is the implementation of the following paper:
 Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1; only the files in ```uncompressed/scenario/training_20s``` are needed. Place the downloaded files into training and testing folders separately.
 
 ## Installation
-### Conda environment
+### Create conda environment
 ```shell
 conda create -n DIPP python=3.8
+```
+### Activate
+```shell
 conda activate DIPP
 ```
 
-### Theseus
+### Install Theseus
 Install the [Theseus library](https://github.com/facebookresearch/theseus) and follow the official guideline.
+
+### Install other dependencies
+```shell
+conda activate DIPP
+```
 
 ## Usage
 ### Training
