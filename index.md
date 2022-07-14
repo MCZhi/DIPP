@@ -27,6 +27,10 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 | <video muted controls width=380> <source src="./src/cf966e6cb27802a3.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/4b7a175072d54d11.mp4"  type="video/mp4"> </video> |
 
+### Emergency
+
+| <video muted controls width=380> <source src="./src/3d43fef395cc20fd.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/8ea14bd2d120c0e4.mp4"  type="video/mp4"> </video> |
+
 ### Interaction
 
 | <video muted controls width=380> <source src="./src/60a9ff3762d159d9.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/a7ec124caa56fbda.mp4"  type="video/mp4"> </video> |
@@ -37,10 +41,6 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 | <video muted controls width=380> <source src="./src/124ae6902ef59cea.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/84b40c7a7d2fb9b0.mp4"  type="video/mp4"> </video> |
 
-
-### Emergency
-
-| <video muted controls width=380> <source src="./src/3d43fef395cc20fd.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/8ea14bd2d120c0e4.mp4"  type="video/mp4"> </video> |
 
 ## Contact
 
