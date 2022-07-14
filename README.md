@@ -15,12 +15,12 @@ Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1;
 sudo apt-get install libsuitesparse-dev
 ```
 
-### Create conda environment
+### Create conda env
 ```bash
 conda env create -f environment.yml
 ```
 
-### Activate
+### Activate env
 ```bash
 conda activate DIPP
 ```
