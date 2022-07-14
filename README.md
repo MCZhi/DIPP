@@ -17,7 +17,7 @@ sudo apt-get install libsuitesparse-dev
 
 ### Create conda environment
 ```bash
-conda create -n DIPP python=3.8
+conda env create -f environment.yml
 ```
 
 ### Activate
