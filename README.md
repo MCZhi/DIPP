@@ -21,7 +21,7 @@ conda activate DIPP
 ```
 
 ### Install Theseus
-Install the [Theseus library](https://github.com/facebookresearch/theseus) and follow the official guideline.
+Install the [Theseus library](https://github.com/facebookresearch/theseus), follow the official guideline.
 
 ### Install other dependencies
 ```shell
