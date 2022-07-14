@@ -29,6 +29,12 @@ conda activate DIPP
 ```
 
 ## Usage
+### Processing
+Run test.py to test the trained policy in the testing situations, along with Envision to visualize the testing process at the same time. You need to specify the algorithm and scenario, and the file path to your trained model. 
+```shell
+scl run --envision test.py value_penalty left_turn train_results/left_turn/value_penalty/Model/Model_X.h5
+```
+
 ### Training
 Run imitation_learning_uncertainty.py to learn the imitative expert policies. You need to specify the file path to the recorded expert trajectories. You can optionally specify how many samples you would like to use to train the expert policies.
 ```shell
@@ -45,14 +51,4 @@ python train.py value_penalty left_turn --prior expert_model/left_turn
 Run plot_train.py to visualize the training results. You need to specify the algorithm and scenario that you have trained with, as well as the metric you want to see (success or reward).
 ```shell
 python plot_train.py value_penalty left_turn success
-```
-
-Run test.py to test the trained policy in the testing situations, along with Envision to visualize the testing process at the same time. You need to specify the algorithm and scenario, and the file path to your trained model. 
-```shell
-scl run --envision test.py value_penalty left_turn train_results/left_turn/value_penalty/Model/Model_X.h5
-```
-
-Run plot_test.py to plot the vehicle dynamics states. You need to specify the path to the test log file.
-```shell
-python plot_test.py test_results/left_turn/value_penalty/test_log.csv
 ```
