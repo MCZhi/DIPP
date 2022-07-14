@@ -7,14 +7,16 @@ This repo is the implementation of the following paper:
 <br> **[[Project Website]](https://mczhi.github.io/DIPP/)**
 
 ## Dataset
-Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1; only the files in ```uncompressed/scenario/training_20s``` are needed. Place the files in a folder of your choosing, and split them into training and testing folders.
+Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1; only the files in ```uncompressed/scenario/training_20s``` are needed. Place the downloaded files into training and testing folders separately.
 
 ## Installation
-### thesus
-Install
+### Conda environment
+```shell
+conda create -n DIPP python=3.8
+```
 
-### Dependencies
-Install
+### Theseus
+Install the [Theseus library](https://github.com/facebookresearch/theseus) and follow the official guideline.
 
 ## Usage
 ### Training
