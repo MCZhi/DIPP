@@ -13,6 +13,7 @@ Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1;
 ### Conda environment
 ```shell
 conda create -n DIPP python=3.8
+conda activate DIPP
 ```
 
 ### Theseus
