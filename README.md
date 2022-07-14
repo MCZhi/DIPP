@@ -11,11 +11,8 @@ Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1;
 
 ## Installation
 ### Create conda environment
-```shell
+```bash
 conda create -n DIPP python=3.8
-```
-### Activate
-```shell
 conda activate DIPP
 ```
 
