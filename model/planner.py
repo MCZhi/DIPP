@@ -32,7 +32,7 @@ class MotionPlanner:
             self.optimizer = th.GaussNewton(objective, th.CholeskyDenseSolver, vectorize=False, max_iterations=2, step_size=0.4)
 
         # set up motion planner
-        self.layer = th.TheseusLayer(self.optimizer, vectorize=False,)
+        self.layer = th.TheseusLayer(self.optimizer, vectorize=False)
         self.layer.to(device=device)
 
 # model
