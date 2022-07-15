@@ -162,7 +162,7 @@ def safety(optim_vars, aux_vars):
     neighbors_current_state = current_state[:, 1:]
     neighbors_len, neighbors_width = neighbors_current_state[..., -3], neighbors_current_state[..., -2]
 
-    l_eps = (ego_width.unsqueeze(1) + neighbors_width)/2
+    l_eps = (ego_width.unsqueeze(1) + neighbors_width)/2 + 0.5
     frenet_neighbors = torch.stack([project_to_frenet_frame(neighbors[:, :, i].detach(), ref_line) for i in range(neighbors.shape[2])], dim=2)
     frenet_ego = project_to_frenet_frame(ego.detach(), ref_line)
     
@@ -177,7 +177,7 @@ def safety(optim_vars, aux_vars):
         distances = torch.norm(ego[:, t, :2].unsqueeze(1) - neighbors[:, t, :, :2], dim=-1).squeeze(1)
         distances = torch.masked_fill(distances, torch.logical_not(interactive), 100)
         distance, index = torch.min(distances, dim=1)
-        s_eps = (ego_len + torch.index_select(neighbors_len, 1, index)[:, 0])/2 + 4
+        s_eps = (ego_len + torch.index_select(neighbors_len, 1, index)[:, 0])/2 + 5
 
         # calculate cost
         error = (s_eps - distance) * (distance < s_eps)
