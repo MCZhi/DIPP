@@ -30,7 +30,7 @@ Install the [Theseus library](https://github.com/facebookresearch/theseus), foll
 
 ## Usage
 ### Processing
-Run ```data_process.py``` to process the raw data for training. This will convert the original data format into a set of ```.npz``` files, each containing the data of a scene with the AV and surrounding agents. You need to specify the file path to the original data and the path to save the processed data. You can optionally use multiprocessing to speed up processing. 
+Run ```data_process.py``` to process the raw data for training. This will convert the original data format into a set of ```.npz``` files, each containing the data of a scene with the AV and surrounding agents. You need to specify the file path to the original data and the path to save the processed data. You can optionally use multiprocessing to speed up the processing. 
 ```shell
 python data_process.py \
 --load_path /path/to/original/data \
@@ -39,15 +39,33 @@ python data_process.py \
 ```
 
 ### Training
-Run imitation_learning_uncertainty.py to learn the imitative expert policies. You need to specify the file path to the recorded expert trajectories. You can optionally specify how many samples you would like to use to train the expert policies.
+Run ```train.py``` to learn the predictor and planner (if set ```--use_planning```). You need to specify the file paths to training data and validation data. Leave other arguments vacant to use the default setting.
 ```shell
-python imitation_learning_uncertainty.py expert_data/left_turn --samples 40
+python train.py \
+--name DIPP \
+--train_set /path/to/train/data \
+--valid_set /path/to/valid/data \
+--use_planning \
+--seed 42 \
+--num_workers 8 \
+--pretrain_epochs 5 \
+--train_epochs 20 \
+--batch_size 32 \
+--learning_rate 2e-4 \
+--device cuda
 ```
 
 ### Open-loop testing
-5. Run train.py to train the RL agent. You need to specify the algorithm and scenario to run, and also the file path to the pre-trained imitative models if you are using the expert prior-guided algorithms. The available algorithms are sac, value_penalty, policy_constraint, ppo, gail. If you are using GAIL, the prior should be the path to your demonstration trajectories.
+Run ```open_loop_test.py``` to test the trained planner. You need to specify path, and also the file path to the pre-trained imitative models if you are using the expert prior-guided algorithms. The available algorithms are sac, value_penalty, policy_constraint, ppo, gail. If you are using GAIL, the prior should be the path to your demonstration trajectories.
 ```shell
-python train.py value_penalty left_turn --prior expert_model/left_turn 
+python open_loop_test.py \
+--name open_loop
+--test_set /path/to/original/test/data \
+--model_path /path/to/saved/model \
+--use_planning \
+--render \
+--save \
+--device cpu
 ```
 
 ### Closed-loop testing
