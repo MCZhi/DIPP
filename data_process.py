@@ -13,10 +13,8 @@ from waymo_open_dataset.protos import scenario_pb2
 from multiprocessing import Pool
 from utils.data_utils import *
 
-# gpu setting
-physical_devices = tf.config.list_physical_devices('GPU') 
-for gpu in physical_devices: 
-    tf.config.experimental.set_memory_growth(gpu, True)
+# Disable all GPUS
+tf.config.set_visible_devices([], 'GPU')
 
 # Data process
 class DataProcess(object):
@@ -392,11 +390,9 @@ class DataProcess(object):
                 time_len = len(parsed_data.tracks[sdc_id].states)
                 self.build_map(parsed_data.map_features, parsed_data.dynamic_map_states)
 
-                for timestep in range(self.hist_len, time_len-self.future_len, 5):
+                for timestep in range(self.hist_len, time_len-self.future_len, 10):
                     current = parsed_data.tracks[sdc_id].states[timestep]
                     gt = parsed_data.tracks[sdc_id].states[timestep+self.future_len]
-                    if np.linalg.norm([current.center_x-gt.center_x, current.center_y-gt.center_y]) > 100:
-                        continue
 
                     # process data
                     ego = self.ego_process(sdc_id, timestep, parsed_data.tracks)
