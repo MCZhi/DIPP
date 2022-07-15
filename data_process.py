@@ -446,5 +446,5 @@ if __name__ == "__main__":
             p.map(multiprocessing, data_files)
     else:
         processor = DataProcess(data_files) 
-        processor.process_data(save_path, viz=True)
+        processor.process_data(save_path, viz=False)
         print('Done!')
