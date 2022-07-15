@@ -55,11 +55,9 @@ def MFMA_loss(plans, predictions, scores, ground_truth, weights, use_planning):
     prediction_loss: torch.tensor = 0
     for i in range(10):
         prediction_loss += F.smooth_l1_loss(best_mode_prediction[:, i], ground_truth[:, i+1, :, :3])
-        prediction_loss += F.smooth_l1_loss(best_mode_prediction[:, i, -1], ground_truth[:, i+1, -1, :3])
 
     if not use_planning:
         imitation_loss = F.smooth_l1_loss(best_mode_plan, ground_truth[:, 0, :, :3])
-        imitation_loss += F.smooth_l1_loss(best_mode_plan[:, -1], ground_truth[:, 0, -1, :3])
         
         return 0.5 * prediction_loss + imitation_loss + score_loss
     else:
