@@ -3,7 +3,7 @@ import theseus as th
 from utils.train_utils import project_to_frenet_frame
 
 class MotionPlanner:
-    def __init__(self, trajectory_len, feature_len, device, vectorize=True, test=False):
+    def __init__(self, trajectory_len, feature_len, device, test=False):
         self.device = device
 
         # define cost function
@@ -23,16 +23,16 @@ class MotionPlanner:
 
         # set up objective
         objective = th.Objective()
-        self.objective = cost_function(objective, control_variables, current_state, predictions, ref_line_info, cost_function_weights, vectorize)
+        self.objective = cost_function(objective, control_variables, current_state, predictions, ref_line_info, cost_function_weights)
 
         # set up optimizer
         if test:
-            self.optimizer = th.GaussNewton(objective, th.CholeskyDenseSolver, max_iterations=50, step_size=0.2, abs_err_tolerance=1e-2)
+            self.optimizer = th.GaussNewton(objective, th.CholeskyDenseSolver, vectorize=False, max_iterations=50, step_size=0.2, abs_err_tolerance=1e-2)
         else:
-            self.optimizer = th.GaussNewton(objective, th.CholeskyDenseSolver, max_iterations=2, step_size=0.4)
+            self.optimizer = th.GaussNewton(objective, th.CholeskyDenseSolver, vectorize=False, max_iterations=2, step_size=0.4)
 
         # set up motion planner
-        self.layer = th.TheseusLayer(self.optimizer)
+        self.layer = th.TheseusLayer(self.optimizer, vectorize=False,)
         self.layer.to(device=device)
 
 # model
