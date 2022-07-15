@@ -32,8 +32,8 @@ Install the [Theseus library](https://github.com/facebookresearch/theseus), foll
 ### Processing
 Run ```data_process.py``` to process the . You need to specify the algorithm and scenario, and the file path to your trained model. 
 ```shell
-python data_process.py --load_path
---save_path
+python data_process.py --load_path \
+--save_path \
 --use_multiprocessing
 ```
 
