@@ -30,9 +30,11 @@ Install the [Theseus library](https://github.com/facebookresearch/theseus), foll
 
 ## Usage
 ### Processing
-Run test.py to test the trained policy in the testing situations, along with Envision to visualize the testing process at the same time. You need to specify the algorithm and scenario, and the file path to your trained model. 
+Run ```data_process.py``` to process the . You need to specify the algorithm and scenario, and the file path to your trained model. 
 ```shell
-scl run --envision test.py value_penalty left_turn train_results/left_turn/value_penalty/Model/Model_X.h5
+python data_process.py --load_path
+--save_path
+--use_multiprocessing
 ```
 
 ### Training
