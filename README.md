@@ -25,7 +25,7 @@ conda activate DIPP
 Install the [Theseus library](https://github.com/facebookresearch/theseus), follow the guidelines.
 
 ## Usage
-### Processing
+### Data Processing
 Run ```data_process.py``` to process the raw data for training. This will convert the original data format into a set of ```.npz``` files, each containing the data of a scene with the AV and surrounding agents. You need to specify the file path to the original data and the path to save the processed data. You can optionally use multiprocessing to speed up the processing. 
 ```shell
 python data_process.py \
