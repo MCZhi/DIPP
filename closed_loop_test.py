@@ -28,7 +28,7 @@ def closed_loop_test():
 
     # load model
     predictor = Predictor(50).to(args.device)
-    predictor.load_state_dict(torch.load(args.model, map_location=args.device))
+    predictor.load_state_dict(torch.load(args.model_path, map_location=args.device))
     predictor.eval()
 
     # cache results
@@ -65,9 +65,6 @@ def closed_loop_test():
             with torch.no_grad():
                 plans, predictions, scores, cost_function_weights = predictor(ego, neighbors, lanes, crosswalks)
                 plan, prediction = select_future(plans, predictions, scores)
-                #cost_function_weights = torch.tensor([[0.0548, 0.2852, 0.1249, 0.0140, 0.4576, 0.3102, 3.2432, 10.0000, 10.0000]])
-                #prediction = CTRV_model(neighbors)
-                #plan = torch.stack([torch.zeros_like(plan)[:, :, 0], torch.zeros_like(plan)[:, :, 1]], dim=-1)
 
             # plan
             if args.use_planning:
@@ -138,7 +135,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Closed-loop Test')
     parser.add_argument('--name', type=str, help='log name (default: "Test1")', default="Test1")
     parser.add_argument('--test_file', type=str, help='path to the test file')
-    parser.add_argument('--model', type=str, help='path to saved model')
+    parser.add_argument('--model_path', type=str, help='path to saved model')
     parser.add_argument('--use_planning', action="store_true", help='if use integrated planning module (default: False)', default=False)
     parser.add_argument('--render', action="store_true", help='if render the scene (default: False)', default=False)
     parser.add_argument('--save', action="store_true", help='if save animation (default: False)', default=False)
