@@ -2,7 +2,6 @@ import torch
 import argparse
 import glob
 import os
-#os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import logging
 import time
 import matplotlib.pyplot as plt
@@ -37,7 +36,7 @@ def open_loop_test():
 
     # load model
     predictor = Predictor(50).to(args.device)
-    predictor.load_state_dict(torch.load(args.model, map_location=args.device), strict=False)
+    predictor.load_state_dict(torch.load(args.model_path, map_location=args.device))
     predictor.eval()
 
     # set up planner
@@ -79,9 +78,6 @@ def open_loop_test():
                 with torch.no_grad():
                     plans, predictions, scores, cost_function_weights = predictor(ego, neighbors, lanes, crosswalks)
                     plan, prediction = select_future(plans, predictions, scores)
-                    #cost_function_weights = torch.tensor([[5.8370e-02, 3.9289e-01, 1.2551e-01, 9.1754e-03, 3.3866e-01, 2.8365e-01, 4.6948e+00, 1.0000e+01, 1.0000e+01, 1.0000e+01]])
-                    plan = torch.stack([torch.zeros_like(plan)[:, :, 0], torch.zeros_like(plan)[:, :, 1]], dim=-1)
-                    #prediction = CTRV_model(neighbors)
 
                 # plan
                 if args.use_planning:
@@ -220,7 +216,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Training')
     parser.add_argument('--name', type=str, help='log name (default: "Test1")', default="Test1")
     parser.add_argument('--test_set', type=str, help='path to testing datasets')
-    parser.add_argument('--model', type=str, help='path to saved model')
+    parser.add_argument('--model_path', type=str, help='path to saved model')
     parser.add_argument('--use_planning', action="store_true", help='if use integrated planning module (default: False)', default=False)
     parser.add_argument('--render', action="store_true", help='if render the scenario (default: False)', default=False)
     parser.add_argument('--save', action="store_true", help='if save the rendered images (default: False)', default=False)
