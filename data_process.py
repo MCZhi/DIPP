@@ -392,7 +392,7 @@ class DataProcess(object):
                 time_len = len(parsed_data.tracks[sdc_id].states)
                 self.build_map(parsed_data.map_features, parsed_data.dynamic_map_states)
 
-                for timestep in range(self.hist_len, time_len-self.future_len, 7):
+                for timestep in range(self.hist_len, time_len-self.future_len, 5):
                     current = parsed_data.tracks[sdc_id].states[timestep]
                     gt = parsed_data.tracks[sdc_id].states[timestep+self.future_len]
                     if np.linalg.norm([current.center_x-gt.center_x, current.center_y-gt.center_y]) > 100:
