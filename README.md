@@ -56,10 +56,10 @@ python train.py \
 ```
 
 ### Open-loop testing
-Run ```open_loop_test.py``` to test the trained planner. You need to specify path, and also the file path to the pre-trained imitative models if you are using the expert prior-guided algorithms. The available algorithms are sac, value_penalty, policy_constraint, ppo, gail. If you are using GAIL, the prior should be the path to your demonstration trajectories.
+Run ```open_loop_test.py``` to test the trained planner in an open-loop manner. You need to specify the path to the original test dataset (path to the folder) and also the file path to the trained model. Set ```--render``` to visualize the results and set ```--save``` to save the rendered images.
 ```shell
 python open_loop_test.py \
---name open_loop
+--name open_loop \
 --test_set /path/to/original/test/data \
 --model_path /path/to/saved/model \
 --use_planning \
@@ -69,7 +69,14 @@ python open_loop_test.py \
 ```
 
 ### Closed-loop testing
-Run plot_train.py to visualize the training results. You need to specify the algorithm and scenario that you have trained with, as well as the metric you want to see (success or reward).
+Run ```closed_loop_test.py``` to do closed-loop testing. You need to specify the file path to the original test data (a single file) and also the file path to the trained model. Set ```--render``` to visualize the results and set ```--save``` to save the videos.
 ```shell
-python plot_train.py value_penalty left_turn success
+python closed_loop_test.py \
+--name closed_loop \
+--test_file /path/to/original/test/data \
+--model_path /path/to/saved/model \
+--use_planning \
+--render \
+--save \
+--device cpu
 ```
