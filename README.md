@@ -30,10 +30,11 @@ Install the [Theseus library](https://github.com/facebookresearch/theseus), foll
 
 ## Usage
 ### Processing
-Run ```data_process.py``` to process the . You need to specify the algorithm and scenario, and the file path to your trained model. 
+Run ```data_process.py``` to process the raw data for training. This will convert the original data format into a set of ```.npz``` files, each containing the data of a scene with the AV and surrounding agents. You need to specify the file path to the original data and the path to save the processed data. You can optionally use multiprocessing to speed up processing. 
 ```shell
-python data_process.py --load_path \
---save_path \
+python data_process.py \
+--load_path /path/to/original/data \
+--save_path /output/path/to/processed/data \
 --use_multiprocessing
 ```
 
