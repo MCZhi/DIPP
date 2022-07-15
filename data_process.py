@@ -391,9 +391,6 @@ class DataProcess(object):
                 self.build_map(parsed_data.map_features, parsed_data.dynamic_map_states)
 
                 for timestep in range(self.hist_len, time_len-self.future_len, 10):
-                    current = parsed_data.tracks[sdc_id].states[timestep]
-                    gt = parsed_data.tracks[sdc_id].states[timestep+self.future_len]
-
                     # process data
                     ego = self.ego_process(sdc_id, timestep, parsed_data.tracks)
                     ref_line = self.route_process(sdc_id, timestep, self.current_xyh, parsed_data.tracks)
