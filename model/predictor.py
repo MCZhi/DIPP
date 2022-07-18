@@ -2,20 +2,19 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-# context encoders
+# Agent history encoder
 class AgentEncoder(nn.Module):
     def __init__(self):
         super(AgentEncoder, self).__init__()
-        self.size = nn.Linear(3, 32)
-        self.motion = nn.LSTM(5, 256-32, 2, batch_first=True)
+        self.motion = nn.LSTM(8, 256, 2, batch_first=True)
 
     def forward(self, inputs):
-        size = self.size(inputs[:, -1, 5:8])
-        traj, _ = self.motion(inputs[:, :, :5])
-        output = torch.cat((traj[:, -1], size), dim=1)
+        traj, _ = self.motion(inputs[:, :, :8])
+        output = traj[:, -1]
 
         return output
 
+# Local context encoders
 class LaneEncoder(nn.Module):
     def __init__(self):
         super(LaneEncoder, self).__init__()
@@ -129,8 +128,7 @@ class AgentDecoder(nn.Module):
     def __init__(self, future_steps):
         super(AgentDecoder, self).__init__()
         self._future_steps = future_steps 
-        self.decode = nn.Sequential(nn.Dropout(0.1), nn.Linear(768, 512), nn.ELU(), nn.Dropout(0.1), 
-                                    nn.Linear(512, 256), nn.ELU(), nn.Linear(256, future_steps*3))
+        self.decode = nn.Sequential(nn.Dropout(0.1), nn.Linear(512, 256), nn.ELU(), nn.Linear(256, future_steps*3))
 
     def transform(self, prediction, current_state):
         x = current_state[:, 0] 
@@ -146,8 +144,8 @@ class AgentDecoder(nn.Module):
 
         return traj
        
-    def forward(self, agent_map, agent_agent, actors, current_state):
-        feature = torch.cat([agent_map, agent_agent.unsqueeze(1).repeat(1, 3, 1, 1), actors.unsqueeze(1).repeat(1, 3, 1, 1)], dim=-1)
+    def forward(self, agent_map, agent_agent, current_state):
+        feature = torch.cat([agent_map, agent_agent.unsqueeze(1).repeat(1, 3, 1, 1)], dim=-1)
         decoded = self.decode(feature).view(-1, 3, 10, self._future_steps, 3)
         trajs = torch.stack([self.transform(decoded[:, i, j], current_state[:, j]) for i in range(3) for j in range(10)], dim=1)
         trajs = torch.reshape(trajs, (-1, 3, 10, self._future_steps, 3))
@@ -158,14 +156,13 @@ class AVDecoder(nn.Module):
     def __init__(self, future_steps=50, feature_len=9):
         super(AVDecoder, self).__init__()
         self._future_steps = future_steps
-        self.control = nn.Sequential(nn.Dropout(0.1), nn.Linear(768, 512), nn.ELU(), nn.Dropout(0.1), 
-                                     nn.Linear(512, 256), nn.ELU(), nn.Linear(256, future_steps*2))
+        self.control = nn.Sequential(nn.Dropout(0.1), nn.Linear(512, 256), nn.ELU(), nn.Linear(256, future_steps*2))
         self.cost = nn.Sequential(nn.Linear(1, 128), nn.ReLU(), nn.Linear(128, feature_len), nn.Softmax(dim=-1))
         self.register_buffer('scale', torch.tensor([1, 1, 1, 1, 1, 10, 100]))
         self.register_buffer('constraint', torch.tensor([[10, 10]]))
 
     def forward(self, agent_map, agent_agent, actor):
-        feature = torch.cat([agent_map, agent_agent.unsqueeze(1).repeat(1, 3, 1), actor.unsqueeze(1).repeat(1, 3, 1)], dim=-1)
+        feature = torch.cat([agent_map, agent_agent.unsqueeze(1).repeat(1, 3, 1)], dim=-1)
         actions = self.control(feature).view(-1, 3, self._future_steps, 2)
         dummy = torch.ones(1, 1).to(self.cost[0].weight.device)
         cost_function_weights = torch.cat([self.cost(dummy)[:, :7] * self.scale, self.constraint], dim=-1)
@@ -250,8 +247,8 @@ class Predictor(nn.Module):
         agent_map = torch.stack(agent_map, dim=2)
 
         # plan + prediction 
-        plans, cost_function_weights = self.plan(agent_map[:, :, 0], agent_agent[:, 0], actors[:, 0])
-        predictions = self.predict(agent_map[:, :, 1:], agent_agent[:, 1:], actors[:, 1:], neighbors[:, :, -1])
+        plans, cost_function_weights = self.plan(agent_map[:, :, 0], agent_agent[:, 0])
+        predictions = self.predict(agent_map[:, :, 1:], agent_agent[:, 1:], neighbors[:, :, -1])
         scores = self.score(map_feature, agent_agent, agent_map)
         
         return plans, predictions, scores, cost_function_weights
