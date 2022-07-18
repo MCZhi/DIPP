@@ -169,4 +169,3 @@ dependencies:
     - werkzeug==2.1.2
     - wrapt==1.12.1
     - zipp==3.8.0
-prefix: /home/automan/anaconda3/envs/th
