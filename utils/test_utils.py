@@ -312,7 +312,7 @@ def check_collision_step(ego_center_points, neighbor_center_points, sizes):
 
 def check_dynamics(traj):
     traj = np.array(traj)
-    v_x, v_y, theta = np.diff(traj[:, 0]) / 0.1, np.diff(traj[:, 1]) / 0.1, traj[:-1, 2]
+    v_x, v_y, theta = np.diff(traj[:, 0]) / 0.1, np.diff(traj[:, 1]) / 0.1, traj[1:, 2]
     lon_speed = v_x * np.cos(theta) + v_y * np.sin(theta)
     lat_speed = v_y * np.cos(theta) - v_x * np.sin(theta)
     acc = np.diff(lon_speed) / 0.1
