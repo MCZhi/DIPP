@@ -26,7 +26,7 @@ Install the [Theseus library](https://github.com/facebookresearch/theseus), foll
 
 ## Usage
 ### Data Processing
-Run ```data_process.py``` to process the raw data for training. This will convert the original data format into a set of ```.npz``` files, each containing the data of a scene with the AV and surrounding agents. You need to specify the file path to the original data and the path to save the processed data. You can optionally use multiprocessing to speed up the processing. 
+Run ```data_process.py``` to process the raw data for training. This will convert the original data format into a set of ```.npz``` files, each containing the data of a scene with the AV and surrounding agents. You need to specify the file path to the original data ```--load_path``` and the path to save the processed data ```--save_path``` . You can optionally set ```--use_multiprocessing``` to speed up the processing. 
 ```shell
 python data_process.py \
 --load_path /path/to/original/data \
@@ -35,7 +35,7 @@ python data_process.py \
 ```
 
 ### Training
-Run ```train.py``` to learn the predictor and planner (if set ```--use_planning```). You need to specify the file paths to training data and validation data. Leave other arguments vacant to use the default setting.
+Run ```train.py``` to learn the predictor and planner (if set ```--use_planning```). You need to specify the file paths to training data ```--train_set``` and validation data ```--valid_set```. Leave other arguments vacant to use the default setting.
 ```shell
 python train.py \
 --name DIPP \
@@ -52,7 +52,7 @@ python train.py \
 ```
 
 ### Open-loop testing
-Run ```open_loop_test.py``` to test the trained planner in an open-loop manner. You need to specify the path to the original test dataset (path to the folder) and also the file path to the trained model. Set ```--render``` to visualize the results and set ```--save``` to save the rendered images.
+Run ```open_loop_test.py``` to test the trained planner in an open-loop manner. You need to specify the path to the original test dataset ```--test_set``` (path to the folder) and also the file path to the trained model ```--model_path```. Set ```--render``` to visualize the results and set ```--save``` to save the rendered images.
 ```shell
 python open_loop_test.py \
 --name open_loop \
@@ -65,7 +65,7 @@ python open_loop_test.py \
 ```
 
 ### Closed-loop testing
-Run ```closed_loop_test.py``` to do closed-loop testing. You need to specify the file path to the original test data (a single file) and also the file path to the trained model. Set ```--render``` to visualize the results and set ```--save``` to save the videos.
+Run ```closed_loop_test.py``` to do closed-loop testing. You need to specify the file path to the original test data ```--test_file``` (a single file) and also the file path to the trained model ```--model_path```. Set ```--render``` to visualize the results and set ```--save``` to save the videos.
 ```shell
 python closed_loop_test.py \
 --name closed_loop \
