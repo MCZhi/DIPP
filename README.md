@@ -76,3 +76,14 @@ python closed_loop_test.py \
 --save \
 --device cpu
 ```
+
+## Citation
+If you find our repo or our paper useful, please use the following citation:
+```
+@article{huang2022efficient,
+  title={Efficient Deep Reinforcement Learning with Imitative Expert Priors for Autonomous Driving},
+  author={Huang, Zhiyu and Wu, Jingda and Lv, Chen},
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2022}
+}
+```
