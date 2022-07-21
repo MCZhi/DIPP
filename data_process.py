@@ -433,7 +433,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     data_files = glob.glob(args.load_path+'/*')
     save_path = args.save_path
-
+    os.makedirs(save_path, exist_ok=True)
+    
     if args.use_multiprocessing:
         with Pool() as p:
             p.map(multiprocessing, data_files)
