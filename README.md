@@ -80,10 +80,10 @@ python closed_loop_test.py \
 ## Citation
 If you find our repo or our paper useful, please use the following citation:
 ```
-@article{huang2022efficient,
-  title={Efficient Deep Reinforcement Learning with Imitative Expert Priors for Autonomous Driving},
-  author={Huang, Zhiyu and Wu, Jingda and Lv, Chen},
-  journal={IEEE Transactions on Neural Networks and Learning Systems},
+@article{huang2022differentiable,
+  title={Differentiable Integrated Motion Prediction and Planning with Learnable Cost Function for Autonomous Driving},
+  author={Huang, Zhiyu and Liu, Haochen and Wu, Jingda and Lv, Chen},
+  journal={arXiv preprint arXiv:2207.00726},
   year={2022}
 }
 ```
