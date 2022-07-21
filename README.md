@@ -4,7 +4,7 @@ This repo is the implementation of the following paper:
 **Differentiable Integrated Motion Prediction and Planning with Learnable Cost Function for Autonomous Driving**
 <br> [Zhiyu Huang](https://mczhi.github.io/), Haochen Liu, [Jingda Wu](https://wujingda.github.io/), [Chen Lv](https://scholar.google.com/citations?user=UKVs2CEAAAAJ&hl=en) 
 <br> [AutoMan Research Lab, Nanyang Technological University](https://lvchen.wixsite.com/automan)
-<br> **[[Project Website]](https://mczhi.github.io/DIPP/)**
+<br> **[[arXiv]](https://arxiv.org/abs/2103.10690)**&nbsp;**[[Project Website]](https://mczhi.github.io/DIPP/)**
 
 ## Dataset
 Download the [Waymo Open Motion Dataset](https://waymo.com/open/download/) v1.1; only the files in ```uncompressed/scenario/training_20s``` are needed. Place the downloaded files into training and testing folders separately.
