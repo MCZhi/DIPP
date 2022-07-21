@@ -100,7 +100,7 @@ def speed(optim_vars, aux_vars):
     acc = control[:, :, 0]
     speed = velocity.unsqueeze(1) + torch.cumsum(acc * dt, dim=1)
     speed = torch.clamp(speed, min=0)
-    speed_limit = torch.max(aux_vars[0].data[:, :, -1], dim=-1, keepdim=True)[0]
+    speed_limit = torch.max(aux_vars[0].tensor[:, :, -1], dim=-1, keepdim=True)[0]
     speed_error = speed - speed_limit
 
     return speed_error
