@@ -41,6 +41,15 @@ The proposed framework consists of two parts. First, we build up a holistic neur
 
 | <video muted controls width=380> <source src="./src/124ae6902ef59cea.mp4"  type="video/mp4"> </video> | <video muted controls width=380> <source src="./src/84b40c7a7d2fb9b0.mp4"  type="video/mp4"> </video> |
 
+## Citation
+```
+@article{huang2022differentiable,
+  title={Differentiable Integrated Motion Prediction and Planning with Learnable Cost Function for Autonomous Driving},
+  author={Huang, Zhiyu and Liu, Haochen and Wu, Jingda and Lv, Chen},
+  journal={arXiv preprint arXiv:2207.00726},
+  year={2022}
+}
+```
 
 ## Contact
 
