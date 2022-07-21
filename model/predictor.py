@@ -161,7 +161,7 @@ class AVDecoder(nn.Module):
         self.register_buffer('scale', torch.tensor([1, 1, 1, 1, 1, 10, 100]))
         self.register_buffer('constraint', torch.tensor([[10, 10]]))
 
-    def forward(self, agent_map, agent_agent, actor):
+    def forward(self, agent_map, agent_agent):
         feature = torch.cat([agent_map, agent_agent.unsqueeze(1).repeat(1, 3, 1)], dim=-1)
         actions = self.control(feature).view(-1, 3, self._future_steps, 2)
         dummy = torch.ones(1, 1).to(self.cost[0].weight.device)
