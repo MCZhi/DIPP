@@ -400,7 +400,7 @@ class DataProcess(object):
                     neighbors, _ = self.neighbors_process(sdc_id, timestep, parsed_data.tracks)
                     map_lanes = np.zeros(shape=(self.num_neighbors+1, 6, 100, 17), dtype=np.float32)
                     map_crosswalks = np.zeros(shape=(self.num_neighbors+1, 4, 100, 3), dtype=np.float32)
-                    map_lanes[0], map_crosswalks[0] = self.map_process(ego, timestep)
+                    map_lanes[0], map_crosswalks[0] = self.map_process(ego, timestep, type=1)
 
                     for i in range(self.num_neighbors):
                         if neighbors[i, -1, 0] != 0:
