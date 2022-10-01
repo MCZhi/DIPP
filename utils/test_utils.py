@@ -27,7 +27,7 @@ class TestDataProcess(DataProcess):
         agent_map = np.zeros(shape=(1+self.num_neighbors, 6, 100, 17), dtype=np.float32)
         agent_map_crosswalk = np.zeros(shape=(1+self.num_neighbors, 4, 100, 3), dtype=np.float32)
 
-        agent_map[0], agent_map_crosswalk[0] = self.map_process(ego, timestep)
+        agent_map[0], agent_map_crosswalk[0] = self.map_process(ego, timestep, type=1)
         for i in range(self.num_neighbors):
             if neighbors[i, -1, 0] != 0:
                 agent_map[i+1], agent_map_crosswalk[i+1] = self.map_process(neighbors[i], timestep)
