@@ -1,5 +1,4 @@
 import logging
-from re import L
 import torch
 import matplotlib.pyplot as plt
 import scipy.spatial as T
