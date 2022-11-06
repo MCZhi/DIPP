@@ -106,8 +106,6 @@ def speed(optim_vars, aux_vars):
     return speed_error
 
 def lane_xy(optim_vars, aux_vars):
-    global ref_points
-
     control = optim_vars[0].tensor.view(-1, 50, 2)
     ref_line = aux_vars[0].tensor
     current_state = aux_vars[1].tensor[:, 0]
@@ -122,9 +120,13 @@ def lane_xy(optim_vars, aux_vars):
 
 def lane_theta(optim_vars, aux_vars):
     control = optim_vars[0].tensor.view(-1, 50, 2)
+    ref_line = aux_vars[0].tensor
     current_state = aux_vars[1].tensor[:, 0]
 
     traj = bicycle_model(control, current_state)
+    distance_to_ref = torch.cdist(traj[:, :, :2], ref_line[:, :, :2])
+    k = torch.argmin(distance_to_ref, dim=-1).view(-1, traj.shape[1], 1).expand(-1, -1, 3)
+    ref_points = torch.gather(ref_line, 1, k)
     theta = traj[:, :, 2]
     lane_error = theta[:, 1::2] - ref_points[:, 1::2, 2]
     
