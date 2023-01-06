@@ -43,7 +43,7 @@ def train_epoch(data_loader, predictor, planner, optimizer, use_planning):
 
             planner_inputs = {
                 "control_variables": plan.view(-1, 100), # initial control sequence
-                "predictions": prediction.detach(), # prediction for surrounding vehicles 
+                "predictions": prediction, # prediction for surrounding vehicles 
                 "ref_line_info": ref_line_info,
                 "current_state": current_state
             }
