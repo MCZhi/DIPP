@@ -38,13 +38,16 @@ class MotionPlanner:
 # model
 def bicycle_model(control, current_state):
     dt = 0.1 # discrete time period [s]
+    max_a = 5 # vehicle's accleration limits [m/s^2]
+    max_d = 0.5 # vehicle's steering limits [rad]
+    L = 3.089 # vehicle's wheelbase [m]
+    
     x_0 = current_state[:, 0] # vehicle's x-coordinate [m]
     y_0 = current_state[:, 1] # vehicle's y-coordinate [m]
     theta_0 = current_state[:, 2] # vehicle's heading [rad]
     v_0 = torch.hypot(current_state[:, 3], current_state[:, 4]) # vehicle's velocity [m/s]
-    L = 3.089 # vehicle's wheelbase [m]
-    a = control[:, :, 0] # vehicle's accleration [m/s^2]
-    delta = control[:, :, 1] # vehicle's steering [rad]
+    a = control[:, :, 0].clamp(-max_a, max_a) # vehicle's accleration [m/s^2]
+    delta = control[:, :, 1].clamp(-max_d, max_d) # vehicle's steering [rad]
 
     # speed
     v = v_0.unsqueeze(1) + torch.cumsum(a * dt, dim=1)
