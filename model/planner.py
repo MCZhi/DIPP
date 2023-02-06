@@ -29,7 +29,7 @@ class MotionPlanner:
         if test:
             self.optimizer = th.GaussNewton(objective, th.CholeskyDenseSolver, vectorize=False, max_iterations=50, step_size=0.2, abs_err_tolerance=1e-2)
         else:
-            self.optimizer = th.GaussNewton(objective, th.CholeskyDenseSolver, vectorize=False, max_iterations=2, step_size=0.4)
+            self.optimizer = th.GaussNewton(objective, th.LUDenseSolver, vectorize=False, max_iterations=2, step_size=0.4)
 
         # set up motion planner
         self.layer = th.TheseusLayer(self.optimizer, vectorize=False)
