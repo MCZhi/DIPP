@@ -51,18 +51,14 @@ def MFMA_loss(plans, predictions, scores, ground_truth, weights, use_planning):
     score_loss = F.cross_entropy(scores, best_mode)
     best_mode_plan = torch.stack([plans[i, m] for i, m in enumerate(best_mode)])
     best_mode_prediction = torch.stack([predictions[i, m] for i, m in enumerate(best_mode)])
+    prediction = torch.cat([best_mode_plan.unsqueeze(1), best_mode_prediction], dim=1)
 
     prediction_loss: torch.tensor = 0
-    for i in range(10):
-        prediction_loss += F.smooth_l1_loss(best_mode_prediction[:, i], ground_truth[:, i+1, :, :3])
-
-    if not use_planning:
-        imitation_loss = F.smooth_l1_loss(best_mode_plan, ground_truth[:, 0, :, :3])
-        imitation_loss += F.smooth_l1_loss(best_mode_plan[:, -1], ground_truth[:, 0, -1, :3])
+    for i in range(prediction.shape[1]):
+        prediction_loss += F.smooth_l1_loss(prediction[:, i], ground_truth[:, i, :, :3])
+        prediction_loss += F.smooth_l1_loss(prediction[:, i, -1], ground_truth[:, i, -1, :3])
         
-        return 0.5 * prediction_loss + imitation_loss + score_loss
-    else:
-        return 0.5 * prediction_loss + score_loss
+    return 0.5 * prediction_loss + score_loss
 
 def select_future(plans, predictions, scores):
     plan = torch.stack([plans[i, m] for i, m in enumerate(best_mode)])
