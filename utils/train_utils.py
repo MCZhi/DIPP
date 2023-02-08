@@ -38,7 +38,7 @@ class DrivingData(Dataset):
 
         return ego, neighbors, map_lanes, map_crosswalks, ref_line, gt_future_states
 
-def MFMA_loss(plans, predictions, scores, ground_truth, weights, use_planning):
+def MFMA_loss(plans, predictions, scores, ground_truth, weights):
     global best_mode
 
     predictions = predictions * weights.unsqueeze(1)
