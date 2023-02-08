@@ -35,7 +35,7 @@ def train_epoch(data_loader, predictor, planner, optimizer, use_planning):
         optimizer.zero_grad()
         plans, predictions, scores, cost_function_weights = predictor(ego, neighbors, map_lanes, map_crosswalks)
         plan_trajs = torch.stack([bicycle_model(plans[:, i], ego[:, -1])[:, :, :3] for i in range(3)], dim=1)
-        loss = MFMA_loss(plan_trajs, predictions, scores, ground_truth, weights, use_planning) # multi-future multi-agent loss
+        loss = MFMA_loss(plan_trajs, predictions, scores, ground_truth, weights) # multi-future multi-agent loss
         
         # plan
         if use_planning:
@@ -109,7 +109,7 @@ def valid_epoch(data_loader, predictor, planner, use_planning):
         with torch.no_grad():
             plans, predictions, scores, cost_function_weights = predictor(ego, neighbors, map_lanes, map_crosswalks)
             plan_trajs = torch.stack([bicycle_model(plans[:, i], ego[:, -1])[:, :, :3] for i in range(3)], dim=1)
-            loss = MFMA_loss(plan_trajs, predictions, scores, ground_truth, weights, use_planning) # multi-future multi-agent loss
+            loss = MFMA_loss(plan_trajs, predictions, scores, ground_truth, weights) # multi-future multi-agent loss
 
         # plan 
         if use_planning:
