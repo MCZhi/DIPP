@@ -42,8 +42,6 @@ python train.py \
 --train_set /path/to/train/data \
 --valid_set /path/to/valid/data \
 --use_planning \
---seed 3407 \
---num_workers 8 \
 --pretrain_epochs 5 \
 --train_epochs 20 \
 --batch_size 32 \
