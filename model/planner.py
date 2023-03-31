@@ -54,7 +54,7 @@ def bicycle_model(control, current_state):
     v = torch.clamp(v, min=0)
 
     # angle
-    d_theta = v.detach() * delta / L # use delta to approximate tan(delta)
+    d_theta = v * delta / L # use delta to approximate tan(delta)
     theta = theta_0.unsqueeze(1) + torch.cumsum(d_theta * dt, dim=-1)
     theta = torch.fmod(theta, 2*torch.pi)
     
