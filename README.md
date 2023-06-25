@@ -78,10 +78,11 @@ python closed_loop_test.py \
 ## Citation
 If you find our repo or our paper useful, please use the following citation:
 ```
-@article{huang2022differentiable,
-  title={Differentiable Integrated Motion Prediction and Planning with Learnable Cost Function for Autonomous Driving},
+@article{huang2023differentiable,
+  title={Differentiable integrated motion prediction and planning with learnable cost function for autonomous driving},
   author={Huang, Zhiyu and Liu, Haochen and Wu, Jingda and Lv, Chen},
-  journal={arXiv preprint arXiv:2207.10422},
-  year={2022}
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2023},
+  publisher={IEEE}
 }
 ```
